@@ -36,8 +36,9 @@ class EventProcessor(object):
 
 #
 # Simple wrapper that can make any EventProcessor subclass thread safe
-class ThreadSafeEventProcessor:
+class ThreadSafeEventProcessor(EventProcessor):
     def __init__(self, event_processor):
+        super(ThreadSafeEventProcessor, self).__init__()
         self._event_processor = event_processor
         self._lock = threading.Lock()
 
